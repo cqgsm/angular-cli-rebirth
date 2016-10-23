@@ -1,5 +1,9 @@
 // This file includes polyfills needed by Angular 2 and is loaded before
 // the app. You can add your own extra polyfills to this file.
+import { environment } from './environments/environment';
+
+import 'ie-shim'; // Internet Explorer 9 support
+
 import 'core-js/es6/symbol';
 import 'core-js/es6/object';
 import 'core-js/es6/function';
@@ -17,3 +21,9 @@ import 'core-js/es6/reflect';
 
 import 'core-js/es7/reflect';
 import 'zone.js/dist/zone';
+
+if (!environment.production) {
+  // Development
+  Error.stackTraceLimit = Infinity;
+  require('zone.js/dist/long-stack-trace-zone');
+}

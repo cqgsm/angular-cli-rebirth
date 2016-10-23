@@ -1,7 +1,7 @@
 // Typings reference file, you can add your own global typings here
 // https://www.typescriptlang.org/docs/handbook/writing-declaration-files.html
 
-declare var System: any;
+// declare var System: any;
 // support NodeJS modules without type definitions
 
 // Extra variables that live on Global that will be replaced by webpack DefinePlugin
