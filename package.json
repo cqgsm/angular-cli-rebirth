@@ -1,6 +1,9 @@
 {
   "name": "rebirth",
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "Angular2 blog",
+  "author": [],
+  "homepage": "http://git.oschina.net/greengerong/rebirth",
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
@@ -20,14 +23,35 @@
     "@angular/platform-browser": "~2.1.0",
     "@angular/platform-browser-dynamic": "~2.1.0",
     "@angular/router": "~3.1.0",
+    "bootstrap-sass": "^3.3.6",
+    "codemirror": "^5.17.0",
     "core-js": "^2.4.1",
+    "font-awesome": "^4.6.3",
+    "highlight.js": "^9.6.0",
+    "ie-shim": "^0.1.0",
+    "immutable": "^3.8.1",
+    "lodash": "^4.15.0",
+    "markdown-it": "^8.0.0",
+    "normalize.css": "^4.2.0",
+    "rebirth-http": "^0.0.4-build-1",
+    "rebirth-permission": "^0.0.2-build-1",
+    "rebirth-storage": "^0.0.5-build-2",
     "rxjs": "5.0.0-beta.12",
+    "stubby": "^4.0.0",
+    "systemjs": "0.19.38",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"
   },
   "devDependencies": {
-    "@types/jasmine": "^2.2.30",
+    "@types/codemirror": "0.0.32",
+    "@types/hammerjs": "^2.0.32",
+    "@types/highlight.js": "^9.1.7",
+    "@types/jasmine": "^2.2.33",
     "@types/node": "^6.0.42",
+    "@types/selenium-webdriver": "^2.44.28",
+    "@types/source-map": "^0.1.26",
+    "@types/uglify-js": "^2.0.27",
+    "@types/webpack": "^1.12.34",
     "angular-cli": "1.0.0-beta.18",
     "codelyzer": "1.0.0-beta.1",
     "jasmine-core": "2.4.1",
@@ -41,5 +65,13 @@
     "ts-node": "1.2.1",
     "tslint": "3.13.0",
     "typescript": "~2.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://git.oschina.net/greengerong/rebirth.git"
+  },
+  "engines": {
+    "node": ">= 4.2.1",
+    "npm": ">= 3"
   }
 }
