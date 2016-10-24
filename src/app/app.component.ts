@@ -1,12 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation, ViewContainerRef } from '@angular/core';
+import { RebirthHttpProvider } from 'rebirth-http';
 import { environment } from '../environments/environment';
+import { LoadService } from  './shared';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app',
+  // encapsulation: ViewEncapsulation.None,
+  styleUrls: [
+    './app.scss',
+  ],
+  template: '<router-outlet></router-outlet>'
 })
 export class AppComponent {
-  title = 'app works!';
-  environment = environment;
+
+  constructor(private rebirthHttpProvider: RebirthHttpProvider, private viewContainer: ViewContainerRef,
+              ) {
+
+    // loadService.defaultViewContainerRef = viewContainer;
+
+    rebirthHttpProvider
+      .baseUrl(environment.api.host)
+      .json()
+      .addInterceptor({
+        request: request => {
+          console.log('全局拦截器(request)', request);
+        },
+        response: (stream) => stream.map(response => {
+          console.log('全局拦截器(response)', response);
+          return response;
+        })
+      })
+      .addInterceptor({
+        request: () => {
+          // loadService.show();
+        },
+        // response: (stream) => (<any>stream).do(() => null, () => loadService.hide(), () => loadService.hide())
+      });
+  }
 }

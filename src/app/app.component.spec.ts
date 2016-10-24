@@ -1,33 +1,40 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
+import { REBIRTH_STORAGE_PROVIDERS } from 'rebirth-storage';
+import { ViewContainerRef } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { RebirthHttpProvider } from 'rebirth-http';
+import { LoadService } from './shared';
+import any = jasmine.any;
 
-describe('App: Rebirth', () => {
+describe('App', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterModule.forRoot(<any>{})
+      ],
       declarations: [
         AppComponent
       ],
+      providers: [
+        { provide: ViewContainerRef, useValue: {} },
+        RebirthHttpProvider,
+        LoadService,
+        ...REBIRTH_STORAGE_PROVIDERS
+      ]
     });
+
   });
 
-  it('should create the app', async(() => {
+  it('should init http interceptors', inject([], () => {
     let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    fixture.whenStable().then(() => {
+      let element = fixture.nativeElement;
+      fixture.detectChanges();
+
+      expect(element.querySelectorAll('router-outlet').length).toEqual(1);
+      expect((<any>fixture.componentInstance).rebirthHttpProvider.getInterceptors().length).toEqual(4);
+    });
   }));
 
-  it(`should have as title 'app works!'`, async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    let app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app works!');
-  }));
-
-  it('should render title in a h1 tag', async(() => {
-    let fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    let compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('app works!');
-  }));
 });
