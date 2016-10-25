@@ -8,8 +8,8 @@ import { ROUTING } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared';
-import BlogAppModule from './blog-app';
-import ManageAppModule from './manage-app';
+import { BlogAppModule } from './blog-app';
+import { ManageAppModule } from './manage-app';
 // Application wide providers
 const APP_PROVIDERS = [];
 
