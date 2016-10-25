@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
 import { QuestionService } from './question.service';
 import { QuestionModel } from './question.model';
-import  { LoadService } from '../../shared';
+import  { LoadService } from '../../shared/loading/loading.service';
 
 @Component({
   selector: 'question',
@@ -13,13 +13,13 @@ export class QuestionComponent implements OnInit {
   private error: any;
 
   constructor(private questionService: QuestionService,
-              // private  loadService: LoadService,
+              private  loadService: LoadService,
               private viewContainer: ViewContainerRef) {
 
   }
 
   ngOnInit() {
-    // this.loadService.show(this.viewContainer);
+    this.loadService.show(this.viewContainer);
     this.questionService.getQuestions()
       .subscribe(
         result => {
@@ -28,7 +28,7 @@ export class QuestionComponent implements OnInit {
         (error) => {
           this.error = error;
         },
-        // () => this.loadService.hide()
+        () => this.loadService.hide()
       );
   }
 }
