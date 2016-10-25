@@ -6,8 +6,8 @@ import { ROUTER_CONFIG as MANAGE_ROUTER_CONFIG } from './manage-app/manage.route
 
 export const ROUTER_CONFIG: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/blog/home' },
-  { path: 'blog', children: BLOG_ROUTER_CONFIG },
-  { path: 'manage', children: MANAGE_ROUTER_CONFIG },
+  ...BLOG_ROUTER_CONFIG,
+  ...MANAGE_ROUTER_CONFIG
   // { path: 'blog', loadChildren: './blog-app/blog-app.module#BlogAppModule' },
   // { path: 'manage', loadChildren: './manage-app/manage-app.module#ManageAppModule' },
 ];
